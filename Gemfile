@@ -39,7 +39,7 @@ group :development, :test do
 end
 
 gem 'devise', '~> 4.2.1'
-
+gem 'bootstrap-sass', '~> 3.3.6'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

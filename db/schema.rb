@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170331043633) do
 
   create_table "balances", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
-    t.float    "amount",    limit: 24
+    t.float    "amount",     limit: 24
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end

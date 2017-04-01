@@ -38,6 +38,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'factory_girl'
+  gem 'faker'
+  gem 'simplecov', :require => false
+end
+
 gem 'devise', '~> 4.2.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 group :development do

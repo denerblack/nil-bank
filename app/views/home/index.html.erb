@@ -1,1 +1,30 @@
-<p><strong>Saldo: </strong> <%= current_user.balance.amount %></p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h3>Saldo</h3></div>
+      <div class="panel-body">
+        <h2>
+          <p><%= balance %></p>
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-warning">
+      <div class="panel-heading"><h3>Investimentos</h3></div>
+      <div class="panel-body">
+          <table class="table table-condensed table-striped">
+            <% @investiments.each do |investment| %>
+              <tr>
+                <td><%= investment['symbol'] %></td>
+                <td><%= investment['LastTradePriceOnly'] %></td>
+              </tr>
+            <% end %>
+          </table>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Ver tela de Investimentos >> ", "#" %>
+      </div>
+    </div>
+  </div>
+</div>

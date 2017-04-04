@@ -19,11 +19,15 @@ RSpec.describe Balance, type: :model do
   describe "subtract amount" do
     let(:normal_user) do
       user = create(:user, kind: :normal)
-      create(:balance, user: user)
+      create(:balance, user: user, last_operation: DateTime.current)
       user
     end
 
-    let(:vip_user) { create(:user, kind: :VIP) }
+    let(:vip_user) {
+      user = create(:user, kind: :VIP)
+      create(:balance, user: user, last_operation: DateTime.current)
+      user
+    }
 
     it 'substracts' do
       expect { normal_user.balance.subtract(10.0) }.to change { normal_user.balance.amount }.by(-10.0)
@@ -42,6 +46,18 @@ RSpec.describe Balance, type: :model do
     it 'adds' do
       user = create(:user, kind: :normal)
       expect { user.balance.add(100.0) }.to change { user.balance.amount }.by(100.0)
+    end
+  end
+
+  describe "calculate rate" do
+    let(:vip_user) do
+      user = create(:user, kind: :VIP)
+      create(:balance, user: user, amount: -150.0, last_operation: DateTime.current - 1.hour)
+      user
+    end
+
+    it 'calculates' do
+      expect(vip_user.balance.amount).to eq(-159)
     end
   end
 end

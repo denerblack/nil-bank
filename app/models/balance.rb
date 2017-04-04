@@ -22,4 +22,13 @@ class Balance < ActiveRecord::Base
     self.amount -= value
     save
   end
+
+  def amount
+    if super < 0
+      diff_in_minutes = ((Time.now - self.last_operation) / 60).round
+      result = (super + super * diff_in_minutes * 0.1 / 100).round
+      return result
+    end
+    read_attribute(:amount)
+  end
 end

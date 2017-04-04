@@ -32,9 +32,9 @@ class User < ActiveRecord::Base
   validates_presence_of :password
 
 
-  enum kind: %w(normal VIP)
+  enum kind: [:normal, :VIP]
 
-  after_create :create_balance#, unless: :manager?
+  after_create :create_balance
 
   def email_required?
     false

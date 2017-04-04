@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170401232019) do
     t.string   "name",                   limit: 255
     t.string   "account",                limit: 255
     t.string   "password",               limit: 255
-    t.string   "kind",                   limit: 255
+    t.integer "kind"
     t.boolean  "manager",                            default: false
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false

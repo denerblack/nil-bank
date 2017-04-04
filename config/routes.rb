@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #resources :transactions
+  get 'transactions/new/:kind' => 'transactions#new', as: :transaction_new
+  post 'transactions' => 'transactions#create'
+
   devise_for :users
   get '/' => 'home#index'
 

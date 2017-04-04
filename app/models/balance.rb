@@ -17,7 +17,8 @@ class Balance < ActiveRecord::Base
     save
   end
 
-  def substract(value)
+  def subtract(value)
+    raise "Você não tem saldo suficiente para esta transação" if value > self.amount && user.normal?
     self.amount -= value
     save
   end

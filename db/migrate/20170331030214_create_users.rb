@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :account, length: 5
       t.string :password, length: 4
-      t.string :kind
+      t.integer :kind
       t.boolean :manager, default: false
 
       t.timestamps null: false

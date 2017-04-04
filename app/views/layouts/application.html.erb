@@ -37,7 +37,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transações<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Saque</a></li>
+                  <li>
+                    <%= link_to "Saque", transactions_path %>
+                  </li>
                   <li><a href="#">Depósito</a></li>
                   <li><a href="#">Transferência</a></li>
                 </ul>
@@ -46,7 +48,9 @@
               <li><a href="#">Visitas do Gerente</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#" class="btn btn-danger" >Trocar usuário</a></li>
+              <li>
+                <%= link_to('Trocar Usuário', destroy_user_session_path, :method => :delete, class: "btn btn-danger") %>
+              </li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

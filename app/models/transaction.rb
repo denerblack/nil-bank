@@ -12,4 +12,5 @@
 
 class Transaction < ActiveRecord::Base
   belongs_to :balance
+  belongs_to :user_target, class_name: "User", foreign_key: 'user_target_id'
 end

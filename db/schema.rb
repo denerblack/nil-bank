@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401232019) do
+ActiveRecord::Schema.define(version: 20170405021110) do
 
   create_table "balances", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -23,11 +23,12 @@ ActiveRecord::Schema.define(version: 20170401232019) do
   add_index "balances", ["user_id"], name: "index_balances_on_user_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
-    t.string   "kind",       limit: 255
-    t.float    "amount",     limit: 24
-    t.integer  "balance_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "kind",           limit: 255
+    t.float    "amount",         limit: 24
+    t.integer  "balance_id",     limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "user_target_id", limit: 4
   end
 
   add_index "transactions", ["balance_id"], name: "index_transactions_on_balance_id", using: :btree
@@ -36,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170401232019) do
     t.string   "name",                   limit: 255
     t.string   "account",                limit: 255
     t.string   "password",               limit: 255
-    t.integer "kind"
+    t.integer  "kind",                   limit: 4
     t.boolean  "manager",                            default: false
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false

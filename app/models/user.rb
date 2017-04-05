@@ -23,6 +23,7 @@
 
 class User < ActiveRecord::Base
   has_one :balance
+  has_many :transactions, foreign_key: 'user_target_id'
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:account]

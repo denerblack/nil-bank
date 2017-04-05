@@ -15,6 +15,7 @@ class TransactionManager
           user.balance.add(transaction.amount)
         when 'transfer'
           user_target = User.find_by(account: account_target)
+          raise "Conta destino não existe" unless user_target
           user.balance.subtract(transaction.amount)
           user_target.balance.add(transaction.amount)
           transaction.user_target = user_target

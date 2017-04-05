@@ -8,6 +8,7 @@ gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
+gem "therubyracer"
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
@@ -44,6 +45,7 @@ group :test do
   gem 'factory_girl'
   gem 'faker'
   gem 'simplecov', :require => false
+  gem 'database_cleaner'
 end
 
 gem 'devise', '~> 4.2.1'

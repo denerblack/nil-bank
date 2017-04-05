@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170405021110) do
+=======
+ActiveRecord::Schema.define(version: 20170404190145) do
+>>>>>>> d663e7c40d03dab64fae21eb76cd594b7cba328b
 
   create_table "balances", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.float    "amount",     limit: 24
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "user_id",        limit: 4
+    t.float    "amount",         limit: 24, default: 0.0
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.datetime "last_operation"
   end
 
   add_index "balances", ["user_id"], name: "index_balances_on_user_id", using: :btree
@@ -51,8 +56,6 @@ ActiveRecord::Schema.define(version: 20170405021110) do
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
   end
-
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "balances", "users"
   add_foreign_key "transactions", "balances"

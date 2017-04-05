@@ -38,10 +38,14 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transações<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li>
-                    <%= link_to "Saque", transactions_path %>
+                    <%= link_to "Saque", transaction_new_path(:withdraw) %>
                   </li>
-                  <li><a href="#">Depósito</a></li>
-                  <li><a href="#">Transferência</a></li>
+                  <li>
+                    <%= link_to "Depósito", transaction_new_path(:deposit) %>
+                  </li>
+                  <li>
+                    <%= link_to "Transferência", transaction_new_path(:transfer) %>
+                  </li>
                 </ul>
               </li>
               <li><a href="#">Investimentos</a></li>

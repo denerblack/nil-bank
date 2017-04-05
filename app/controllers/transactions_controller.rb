@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-    result = transaction_manager.do_transaction(@transaction)
+    result = transaction_manager.do_transaction(@transaction, params[:user_target])
     if result.success?
       flash[:notice] = result.message
     else

@@ -13,6 +13,11 @@
           <div class="form-group">
             <%= f.number_field :amount, class: "form-control", placeholder: "Valor" %>
           </div>
+          <% if @transaction.kind.eql?('transfer') %>
+            <div class="form-group">
+              <%= text_field_tag :user_target, nil, class: "form-control", placeholder: "Conta Destino" %>
+            </div>
+          <% end %>
           <div class="actions">
             <%= f.submit "Enviar", class: "btn btn-lg btn-success btn-block" %>
           </div>

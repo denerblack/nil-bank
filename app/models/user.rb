@@ -6,7 +6,7 @@
 #  name                   :string(255)
 #  account                :string(255)
 #  password               :string(255)
-#  kind                   :string(255)
+#  kind                   :integer
 #  manager                :boolean          default("0")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -24,6 +24,7 @@
 class User < ActiveRecord::Base
   has_one :balance
   has_many :transactions, foreign_key: 'user_target_id'
+  has_many :investment_portfolios
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:account]

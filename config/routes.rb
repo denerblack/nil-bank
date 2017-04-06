@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'investments_portfolio' => 'investments_portfolio#index'
+  post 'investments_portfolio/purchase' => 'investments_portfolio#purchase'
+
   #resources :transactions
   get 'transactions/new/:kind' => 'transactions#new', as: :transaction_new
   post 'transactions' => 'transactions#create'

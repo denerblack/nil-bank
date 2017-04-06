@@ -4,13 +4,13 @@ class InvestimentsManager
 
   def self.user_investments(user)
     quotes = quotations
-    user.investments.map do |investment|
+    user.investment_portfolios.map do |investment|
       {
-        action: investment[:action],
-        status: investment[:status],
-        user_id: investment[:user_id],
-        purchase_price: investment[:purchase_price] || quotes.find {|quote| quote["LastTradePriceOnly"]},
-        sale_price: investment[:sale_price]
+        action: investment.action,
+        status: investment.status,
+        user_id: investment.user_id,
+        purchase_price: investment.purchase_price,
+        sale_price: investment.sale_price || quotes.find {|quote| quote["LastTradePriceOnly"]}
       }
     end
   end

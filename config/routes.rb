@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'manager_visits/index'
+
   get 'investments_portfolio' => 'investments_portfolio#index'
   post 'investments_portfolio/purchase' => 'investments_portfolio#purchase'
   post 'investments_portfolio/sale' => 'investments_portfolio#sale'

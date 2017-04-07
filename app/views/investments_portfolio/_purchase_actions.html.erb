@@ -1,0 +1,25 @@
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3>Comprar ações</h3></div>
+      <div class="panel-body">
+        <%= form_tag investments_portfolio_purchase_path, remote: true do |f| %>
+          <table class="table table-condensed table-striped">
+            <% @investments.each_with_index do |investment, i| %>
+              <tr>
+                <td><%= investment['symbol'] %></td>
+                <td><%= investment['LastTradePriceOnly'] %></td>
+                <td>
+                  <%= hidden_field_tag "investments_portfolio[#{i}]user_id", current_user.id %>
+                  <%= hidden_field_tag "investments_portfolio[#{i}]action", investment["symbol"] %>
+                  <%= hidden_field_tag "investments_portfolio[#{i}]status", :purchased %>
+                  <%= hidden_field_tag "investments_portfolio[#{i}]purchase_price", investment["LastTradePriceOnly"] %>
+                  <%= number_field_tag "investments_portfolio[#{i}]quantity" %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+          <%= submit_tag "Comprar", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>

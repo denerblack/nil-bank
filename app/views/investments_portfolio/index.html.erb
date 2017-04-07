@@ -1,49 +1,8 @@
-<div class="panel panel-warning">
-  <div class="panel-heading"><h3>Investimentos</h3></div>
-  <div class="panel-body">
-    <%= form_tag investments_portfolio_purchase_path, remote: true do |f| %>
-      <table class="table table-condensed table-striped">
-        <% @investments.each_with_index do |investment, i| %>
-          <tr>
-            <td><%= investment['symbol'] %></td>
-            <td><%= investment['LastTradePriceOnly'] %></td>
-            <td>
-              <%= hidden_field_tag "investments_portfolio[#{i}]user_id", current_user.id %>
-              <%= hidden_field_tag "investments_portfolio[#{i}]action", investment["symbol"] %>
-              <%= hidden_field_tag "investments_portfolio[#{i}]sale_price", investment["LastTradePriceOnly"] %>
-              <%= number_field_tag "investments_portfolio[#{i}]quantity" %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-      <%= submit_tag "Comprar" %>
-    <% end %>
+<div class="row">
+  <div id="purchase_actions">
+    <%= render "purchase_actions" %>
   </div>
-</div>
-<div class="panel panel-warning">
-  <div class="panel-heading"><h3>Investimentos</h3></div>
-  <div class="panel-body">
-    <table class="table table-condensed table-striped">
-      <thead>
-        <tr>
-          <th>Ação</th>
-          <th>Status</th>
-          <th>Preço de Compra</th>
-          <th>Preço de Venda</th>
-          <th>#</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @investment_portfolios.each do |investment| %>
-          <tr>
-            <td><%= investment[:action] %></td>
-            <td> <%= investment[:status] %> </td>
-            <td> <%= investment[:purchase_price] %> </td>
-            <td> <%= investment[:sale_price] %> </td>
-            <td> <%= link_to investments_portfolio_sale_url %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div id="sale_actions">
+    <%= render "sale_actions"  %>
   </div>
 </div>

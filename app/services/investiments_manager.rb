@@ -4,14 +4,8 @@ class InvestimentsManager
 
   def self.user_investments(user)
     quotes = quotations
-    user.investment_portfolios.map do |investment|
-      {
-        action: investment.action,
-        status: investment.status,
-        user_id: investment.user_id,
-        purchase_price: investment.purchase_price,
-        sale_price: investment.sale_price || quotes.find {|quote| quote["LastTradePriceOnly"]}
-      }
+    user.investment_portfolios.each do |investment|
+      investment.sale_price ||= quotes.find {|quote| quote["symbol"] == investment.action}["LastTradePriceOnly"]
     end
   end
 
@@ -20,6 +14,16 @@ class InvestimentsManager
       params.select { |invest| invest[:quantity].to_i > 0}.each do |investment|
         InvestmentPortfolio.create(investment)
       end
+    end
+  end
+
+  def self.sale(params, user)
+    InvestmentPortfolio.transaction do
+      investment = InvestmentPortfolio.update(params[:id], params)
+      total = investment.sale_quantity * investment.sale_price + 1.5
+      user.balance.add(total)
+      pay = total * 0.5 / 100
+      user.balance.subtract(pay)
     end
   end
 

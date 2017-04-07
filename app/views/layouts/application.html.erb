@@ -21,17 +21,21 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Página Inicial</a>
+            <a class="navbar-brand" href="/">Página Inicial</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+              <% if current_user.manager? %>
+              <% else %>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ver<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Saldo</a></li>
-                  <li><a href="#">Extrato</a></li>
+                  <li><a href="/">Saldo</a></li>
+                  <li>
+                    <a href="#">Extrato</a>
+                  </li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -48,8 +52,11 @@
                   </li>
                 </ul>
               </li>
-              <li><a href="#">Investimentos</a></li>
+              <li>
+                <%= link_to "Investimentos", investments_portfolio_path %>
+              </li>
               <li><a href="#">Visitas do Gerente</a></li>
+            <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>

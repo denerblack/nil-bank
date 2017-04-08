@@ -29,34 +29,36 @@
             <ul class="nav navbar-nav">
               <% if current_user.manager? %>
               <% else %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ver<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/">Saldo</a></li>
-                  <li>
-                    <a href="#">Extrato</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transações<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <%= link_to "Saque", transaction_new_path(:withdraw) %>
-                  </li>
-                  <li>
-                    <%= link_to "Depósito", transaction_new_path(:deposit) %>
-                  </li>
-                  <li>
-                    <%= link_to "Transferência", transaction_new_path(:transfer) %>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <%= link_to "Investimentos", investments_portfolio_path %>
-              </li>
-              <li><a href="#">Visitas do Gerente</a></li>
-            <% end %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ver<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/">Saldo</a></li>
+                    <li>
+                      <a href="#">Extrato</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transações<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <%= link_to "Saque", transaction_new_path(:withdraw) %>
+                    </li>
+                    <li>
+                      <%= link_to "Depósito", transaction_new_path(:deposit) %>
+                    </li>
+                    <li>
+                      <%= link_to "Transferência", transaction_new_path(:transfer) %>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <%= link_to "Investimentos", investments_portfolio_path %>
+                </li>
+                <li>
+                  <%= link_to "Visitas do Gerente", manager_visits_path%>
+                </li>
+              <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>

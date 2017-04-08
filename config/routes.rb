@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'users/index'
 
-  get 'manager_visits/index'
+  resources :manager_visits, only: [:index, :create]
+  #get 'manager_visits' => 'manager_visits#index'
+  #post 'manager_visits/create' => 'manager_visits#create'
 
   get 'investments_portfolio' => 'investments_portfolio#index'
   post 'investments_portfolio/purchase' => 'investments_portfolio#purchase'

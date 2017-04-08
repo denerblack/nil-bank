@@ -4,7 +4,8 @@ class ManagerVisitsController < ApplicationController
   end
 
   def create
-    current_user.build_manager_visits(manager: User.where(manager: true).first )
+    current_user.manager_visits.create(manager: User.where(manager: true).first )
+    redirect_to :manager_visits
   end
 
 end

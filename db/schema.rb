@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170407023519) do
 
   create_table "balances", force: :cascade do |t|
     t.integer  "user_id",        limit: 4
-    t.float    "amount",         limit: 24
+    t.float    "amount",         limit: 24, default: 0.0
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.datetime "last_operation"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170407023519) do
 
   create_table "transactions", force: :cascade do |t|
     t.string   "kind",           limit: 255
-    t.float    "amount",         limit: 24
+    t.float    "amount",         limit: 24, default: 0.0
     t.integer  "balance_id",     limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

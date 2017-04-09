@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  kind           :string(255)
-#  amount         :float(24)
+#  amount         :float(24)        default("0")
 #  balance_id     :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null

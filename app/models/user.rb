@@ -23,7 +23,8 @@
 
 class User < ActiveRecord::Base
   has_one :balance
-  has_many :transactions, foreign_key: 'user_target_id'
+  has_many :transactions, class_name: 'Transaction', foreign_key: 'user_source_id'
+  has_many :transactions_for_me, class_name: 'Transaction', foreign_key: 'user_target_id'
   has_many :investment_portfolios
   has_many :manager_visits
 

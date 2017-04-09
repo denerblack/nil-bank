@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/index'
+  resources 'balances', only: :index
+  resources 'users', only: :index
+
+  #get 'users/index'
 
   resources :manager_visits, only: [:index, :create]
   #get 'manager_visits' => 'manager_visits#index'

@@ -21,6 +21,6 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :kind)
+    params.require(:transaction).permit(:amount, :kind, :user_source_id)
   end
 end

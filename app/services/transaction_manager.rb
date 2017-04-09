@@ -6,6 +6,7 @@ class TransactionManager
   end
 
   def do_transaction(transaction, account_target = nil)
+    debugger
     Transaction.transaction do
       begin
         case transaction.kind

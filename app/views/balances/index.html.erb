@@ -1,0 +1,35 @@
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Extrato</h3></div>
+    <div class="panel-body">
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th>Valor</th>
+            <th>Data</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @extract.each_with_index do |extract| %>
+          <tr>
+            <td>
+              <%= extract[:amount] %>
+            </td>
+            <td>
+              <%= extract[:done_at] %>
+            </td>
+            <td>
+              <%= extract[:type]%>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+      Saldo: <%= current_user.balance.amount %>
+    </div>
+  </div>
+</div>
+

@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407023519) do
+ActiveRecord::Schema.define(version: 20170409124711) do
 
   create_table "balances", force: :cascade do |t|
     t.integer  "user_id",        limit: 4
     t.float    "amount",         limit: 24, default: 0.0
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.datetime "last_operation"
   end
 
@@ -40,19 +40,21 @@ ActiveRecord::Schema.define(version: 20170407023519) do
   create_table "manager_visits", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "manager_id", limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.float    "amount",     limit: 24
   end
 
   add_index "manager_visits", ["user_id"], name: "index_manager_visits_on_user_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
     t.string   "kind",           limit: 255
-    t.float    "amount",         limit: 24, default: 0.0
+    t.float    "amount",         limit: 24,  default: 0.0
     t.integer  "balance_id",     limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "user_target_id", limit: 4
+    t.integer  "user_source_id", limit: 4
   end
 
   add_index "transactions", ["balance_id"], name: "index_transactions_on_balance_id", using: :btree

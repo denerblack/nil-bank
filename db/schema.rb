@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 20170409145547) do
 
   create_table "transactions", force: :cascade do |t|
     t.string   "kind",           limit: 255
-    t.float    "amount",         limit: 24,  default: 0.0
+    t.float    "amount",         limit: 24
     t.integer  "balance_id",     limit: 4
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_target_id", limit: 4
     t.integer  "user_source_id", limit: 4
   end
@@ -78,8 +78,6 @@ ActiveRecord::Schema.define(version: 20170409145547) do
     t.string   "last_sign_in_ip",        limit: 255
     t.integer  "manager_id",             limit: 4
   end
-
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "balances", "users"
   add_foreign_key "investment_portfolios", "users"

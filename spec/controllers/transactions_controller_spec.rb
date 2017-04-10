@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TransactionsController, type: :controller do
+  login_user
 
 #  describe "GET #transfer" do
 #    it "returns http success" do

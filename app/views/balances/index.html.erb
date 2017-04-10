@@ -1,35 +1,31 @@
-<div class="col-md-4">
+<div class="col-md-10">
   <div class="panel panel-default">
     <div class="panel-heading"><h3>Extrato</h3></div>
     <div class="panel-body">
-      <table class="table table-condensed table-striped">
-        <thead>
-          <tr>
-            <th>Valor</th>
-            <th>Data</th>
-            <th>Tipo</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @extract.each_with_index do |extract| %>
-          <tr>
-            <td>
-              <%= extract[:amount] %>
-            </td>
-            <td>
-              <%= extract[:done_at] %>
-            </td>
-            <td>
-              <%= extract[:type]%>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+      <%= form_tag balances_search_path, remote: true do %>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= text_field_tag :start_at, nil, class: 'form-control datepicker', placeholder: 'Data Inicial' %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= text_field_tag :end_at, nil, class: 'form-control datepicker', placeholder: 'Data Final'%>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <%= submit_tag 'Pesquisar', class: "btn btn-primary" %>
+          </div>
+        </div>
+        <div id="result">
+
+        </div>
+      <% end %>
     </div>
     <div class="panel-footer">
       Saldo: <%= current_user.balance.amount %>
     </div>
   </div>
 </div>
-

@@ -58,3 +58,4 @@ group :development do
   gem 'spring'
 end
 
+gem 'rails-assets-bootstrap-datepicker', source: 'https://rails-assets.org'

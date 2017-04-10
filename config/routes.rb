@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     resources 'customers', only: [:index, :new, :create]
   end
 
-  resources 'balances', only: :index
+  resources 'balances', only: :index do
+  end
+  post 'balances/search' => 'balances#search'
   resources 'users', only: :index
 
   #get 'users/index'

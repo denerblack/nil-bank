@@ -7,6 +7,7 @@
 #  manager_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  amount     :float(24)
 #
 
 require 'rails_helper'

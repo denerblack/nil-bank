@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :manager do
+    resources 'customers', only: [:index, :new, :create]
+  end
+
   resources 'balances', only: :index
   resources 'users', only: :index
 

@@ -12,10 +12,11 @@
 
 class Balance < ActiveRecord::Base
   belongs_to :user
+  has_many :transactions
 
   def add(value)
     self.amount += value
-    save
+    save!
   end
 
   def subtract(value)

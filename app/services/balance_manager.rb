@@ -1,6 +1,6 @@
 class BalanceManager
   def self.extract(user, start_at = DateTime.current.beginning_of_month, end_at = DateTime.current)
-    extract = user.transactions.where(created_at: start_at..end_at).map do |transaction|
+    extract = user.balance.transactions.where(created_at: start_at..end_at).map do |transaction|
       type = 'D' if transaction.kind.eql?('withdraw') || transaction.kind.eql?('transfer') || transaction.kind.eql?('tax')
       type = 'C' if transaction.kind.eql?('deposit')
       {

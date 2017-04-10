@@ -19,6 +19,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
+#  manager_id             :integer
 #
 
 require 'rails_helper'

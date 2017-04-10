@@ -1,0 +1,31 @@
+<div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Clientes</h3></div>
+    <div class="panel-body">
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Conta</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @customers.each_with_index do |customer| %>
+          <tr>
+            <td>
+              <%= customer.name %>
+            </td>
+            <td>
+              <%= customer.account %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="actions col-md-8">
+  <%= link_to "Cadastrar Cliente", new_manager_customer_path, class: "btn btn-primary" %>
+</div>
+

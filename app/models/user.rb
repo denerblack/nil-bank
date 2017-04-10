@@ -6,7 +6,7 @@
 #  name                   :string(255)
 #  account                :string(255)
 #  password               :string(255)
-#  kind                   :string(255)
+#  kind                   :integer
 #  manager                :boolean          default("0")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -19,11 +19,17 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
+#  manager_id             :integer
 #
 
 class User < ActiveRecord::Base
   has_one :balance
-  has_many :transactions, foreign_key: 'user_target_id'
+  has_many :transactions, class_name: 'Transaction', foreign_key: 'user_source_id'
+  has_many :customers, class_name: 'User', foreign_key: 'manager_id'
+  has_many :transactions_for_me, class_name: 'Transaction', foreign_key: 'user_target_id'
+  has_many :investment_portfolios
+  has_many :manager_visits
+  belongs_to :my_manager, class_name: 'User', foreign_key: 'manager_id'
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:account]

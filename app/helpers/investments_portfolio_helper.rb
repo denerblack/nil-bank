@@ -1,0 +1,2 @@
+module InvestmentsPortfolioHelper
+end

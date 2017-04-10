@@ -9,6 +9,7 @@
           <%= content_tag :div, msg, class: name %>
         <% end -%>
         <%= form_for @transaction do |f| %>
+          <%= f.hidden_field :user_source_id, value: current_user.id %>
           <%= f.hidden_field :kind, value: f.object.kind %>
           <div class="form-group">
             <%= f.number_field :amount, class: "form-control", placeholder: "Valor" %>

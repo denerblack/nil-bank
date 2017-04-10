@@ -6,7 +6,7 @@
 #  name                   :string(255)
 #  account                :string(255)
 #  password               :string(255)
-#  kind                   :string(255)
+#  kind                   :integer
 #  manager                :boolean          default("0")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -19,6 +19,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
+#  manager_id             :integer
 #
 
 require 'rails_helper'

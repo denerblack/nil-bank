@@ -14,11 +14,7 @@ class TransactionManager
         when 'deposit'
           user.balance.add(transaction.amount)
         when 'transfer'
-          user_target = User.find_by(account: account_target)
-          raise "Conta destino não existe" unless user_target
-          user.balance.subtract(transaction.amount)
-          user_target.balance.add(transaction.amount)
-          transaction.user_target = user_target
+          do_transfer(transaction, account_target)
         end
         transaction.save
         OpenStruct.new(success?: true, object: transaction, message: "Transação efetuada com sucesso.")
@@ -26,6 +22,21 @@ class TransactionManager
         OpenStruct.new(success?: false, object: nil, message: e.to_s)
       end
     end
+  end
+
+  private
+
+  def do_transfer(transaction, account_target)
+    raise "Não pode fazer uma transferência maior que 1000,00" if transaction.amount > 1000 && user.normal?
+    user_target = User.find_by(account: account_target)
+    raise "Conta destino não existe" unless user_target
+    user.balance.subtract(transaction.amount)
+    tax = user.normal? ? 8.0 : (transaction.amount * 0.8/100).round(2)
+    Transaction.create(amount: tax, kind: :tax)
+    user.balance.subtract(tax)
+    user_target.balance.add(transaction.amount)
+    puts user_target.balance.amount
+    transaction.user_target = user_target
   end
 
 end

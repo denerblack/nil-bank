@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  namespace :manager do
+    resources 'customers', only: [:index, :new, :create]
+  end
+
+  resources 'balances', only: :index
+  resources 'users', only: :index
+
+  #get 'users/index'
+
+  resources :manager_visits, only: [:index, :create]
+  #get 'manager_visits' => 'manager_visits#index'
+  #post 'manager_visits/create' => 'manager_visits#create'
+
+  get 'investments_portfolio' => 'investments_portfolio#index'
+  post 'investments_portfolio/purchase' => 'investments_portfolio#purchase'
+  post 'investments_portfolio/sale' => 'investments_portfolio#sale'
+
   #resources :transactions
   get 'transactions/new/:kind' => 'transactions#new', as: :transaction_new
   post 'transactions' => 'transactions#create'

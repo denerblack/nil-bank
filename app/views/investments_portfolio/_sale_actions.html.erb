@@ -1,0 +1,46 @@
+
+  <div class="col-md-8">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h3>Vender Ações</h3></div>
+      <div class="panel-body">
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <th>Ação</th>
+              <th>Status</th>
+              <th>$ de Compra</th>
+              <th>Qtde Comprada</th>
+              <th>$ de Venda</th>
+              <th>Qtde Venda</th>
+              <th>#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @investment_portfolios.each_with_index do |investment, i| %>
+              <tr>
+                <td><%= investment.action %></td>
+                <td> <%= investment.status %> </td>
+                <td> <%= investment.purchase_price %> </td>
+                <td> <%= investment.quantity%> </td>
+                <td> <%= investment.sale_price %> </td>
+                <td>
+                  <%= number_field_tag "sale[#{i}]quantity" %>
+                </td>
+                <td>
+                  <% if investment.purchased?#[:status].eql?('purchased') %>
+                    <%= link_to "Vender", "#", data: { url: investments_portfolio_sale_path,
+                                                  id: investment.id,
+                                                  status: :sold,
+                                                  sale_price: investment.sale_price, index: i},
+                                                  remote: true, class: "btn btn-sm btn-primary sale" %>
+                  <% else %>
+                    <span class="">vendido</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

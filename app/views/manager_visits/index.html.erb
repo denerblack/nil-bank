@@ -1,0 +1,23 @@
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Visitas do Gerente</h3></div>
+    <div class="panel-body">
+      <table class="table table-condensed table-striped">
+        <% @visits.each_with_index do |visit| %>
+          <tr>
+            <td>
+              <%= visit.created_at.strftime("%d/%m/%Y") %>
+            </td>
+            <td>
+              <%= visit.manager.name %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="panel-footer">
+      <%= link_to "Solicitar visita", manager_visits_path, method: :post, data: { confirm: "Deseja uma visita do gerente?" }, class: "btn btn-primary "%>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,2 @@
+module Manager::CustomersHelper
+end

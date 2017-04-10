@@ -23,13 +23,38 @@ ActiveRecord::Schema.define(version: 20170405021110) do
 
   add_index "balances", ["user_id"], name: "index_balances_on_user_id", using: :btree
 
-  create_table "transactions", force: :cascade do |t|
-    t.string   "kind",           limit: 255
-    t.float    "amount",         limit: 24
-    t.integer  "balance_id",     limit: 4
+  create_table "investment_portfolios", force: :cascade do |t|
+    t.string   "action",         limit: 255
+    t.integer  "status",         limit: 4
+    t.float    "purchase_price", limit: 24
+    t.float    "sale_price",     limit: 24
+    t.integer  "user_id",        limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "quantity",       limit: 4
+    t.integer  "sale_quantity",  limit: 4
+  end
+
+  add_index "investment_portfolios", ["user_id"], name: "index_investment_portfolios_on_user_id", using: :btree
+
+  create_table "manager_visits", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "manager_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.float    "amount",     limit: 24
+  end
+
+  add_index "manager_visits", ["user_id"], name: "index_manager_visits_on_user_id", using: :btree
+
+  create_table "transactions", force: :cascade do |t|
+    t.string   "kind",           limit: 255
+    t.float    "amount",         limit: 24,  default: 0.0
+    t.integer  "balance_id",     limit: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "user_target_id", limit: 4
+    t.integer  "user_source_id", limit: 4
   end
 
   add_index "transactions", ["balance_id"], name: "index_transactions_on_balance_id", using: :btree
@@ -51,8 +76,13 @@ ActiveRecord::Schema.define(version: 20170405021110) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
+    t.integer  "manager_id",             limit: 4
   end
 
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
   add_foreign_key "balances", "users"
+  add_foreign_key "investment_portfolios", "users"
+  add_foreign_key "manager_visits", "users"
   add_foreign_key "transactions", "balances"
 end

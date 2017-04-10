@@ -8,7 +8,6 @@ class Manager::CustomersController < ApplicationController
   end
 
   def create
-    debugger
     @customer = current_user.customers.build(customer_params)
     @customer.save!
   end

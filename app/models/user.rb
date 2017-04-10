@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password
 
 
-  enum kind: [:normal, :VIP]
+  enum kind: [:normal, :VIP, :manager]
 
   after_create :create_balance
 
@@ -49,10 +49,6 @@ class User < ActiveRecord::Base
 
   def email_changed?
     false
-  end
-
-  def manager?
-    manager
   end
 
 end

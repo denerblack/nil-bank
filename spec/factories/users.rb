@@ -23,9 +23,31 @@
 #
 
 FactoryGirl.define do
-  factory :user do
+  factory :user, class: User do
+    name Faker::Name.first_name
+    account '1001' #Faker::Number.number(5)
+    password '1234' # Faker::Number.number(4)
+    kind :normal
+  end
+
+  factory :vip_user, class: User do
     name Faker::Name.first_name
     account Faker::Number.number(5)
     password Faker::Number.number(4)
+    kind :VIP
+  end
+
+  factory :user_2, class: User do
+    name Faker::Name.first_name
+    account Faker::Number.number(5)
+    password Faker::Number.number(4)
+    kind :normal
+  end
+
+  factory :manager, class: User do
+    name 'Gerente'
+    account '1'
+    password '1234'
+    manager true
   end
 end

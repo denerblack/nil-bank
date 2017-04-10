@@ -12,7 +12,6 @@ RSpec.describe BalanceManager do
       user_2.balance.add(150)
       transaction = build(:transaction, amount: 1001, kind: :withdraw, balance: user.balance)
       manager = TransactionManager.new(user)
-      manager.do_transaction(transaction_2)
       extract = BalanceManager.extract(user)
       expect(extract.size).to eq(2)
     end

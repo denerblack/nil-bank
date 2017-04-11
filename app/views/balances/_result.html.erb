@@ -1,0 +1,28 @@
+<table class="table table-condensed table-striped">
+  <thead>
+    <tr>
+      <th>Valor</th>
+      <th>Data</th>
+      <th>Tipo</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% extract.each_with_index do |extract| %>
+      <tr>
+        <td>
+          <%= item_amount_extract(extract.amount, extract.type) %>
+        </td>
+        <td>
+          <%= extract.done_at.utc.strftime("%d/%m/%Y %H:%M:%S") %>
+        </td>
+        <td>
+          <%= extract.type%>
+        </td>
+        <td>
+          <%= extract.description%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

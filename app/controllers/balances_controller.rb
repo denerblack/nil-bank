@@ -4,6 +4,6 @@ class BalancesController < ApplicationController
   end
 
   def search
-    @extract = BalanceManager.extract(current_user, params[:start_date], params[:end_date])
+    @extract = BalanceManager.extract(current_user, params[:start_at].to_datetime, params[:end_at].to_datetime)
   end
 end

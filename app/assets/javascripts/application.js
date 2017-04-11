@@ -17,9 +17,9 @@
 //= require bootstrap-datepicker
 //= require_tree .
 
-//$(document).ready(function() {
- //   $('.datepicker').datepicker({
- //       format: "mm/dd/yyyy",
- //       language: "pt-BR"
-  //  });
-//});
+$(document).ready(function() {
+    $('.datepicker').datepicker({
+        format: "dd/mm/yyyy",
+        language: "pt-BR"
+    });
+});
